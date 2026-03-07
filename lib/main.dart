@@ -1,36 +1,87 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String nama = "andrean kosasih";
-    String angka = "2306028";
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Data Mahasiswa"),
-          centerTitle: true,
+          backgroundColor: Colors.red[800],
+          title: Text('Aplikasi Artikel'),
         ),
-        body: Center(
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                nama,
-                style: const TextStyle(fontSize: 24),
+
+              // Gambar Artikel
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+
+                child: Image.network(
+                  'https://picsum.photos/id/237/400/200',
+                  fit: BoxFit.cover,
+                ),
               ),
-              const SizedBox(height: 10),
+
+              SizedBox(height: 10),
+
+              // Judul Artikel
               Text(
-                angka,
-                style: const TextStyle(fontSize: 20),
+                "Judul Artikel Baru",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              // Isi Artikel
+              Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                "Ut enim ad minim veniam.",
+                style: TextStyle(fontSize: 14),
+              ),
+
+              SizedBox(height: 10),
+
+              // Komentar
+              Text(
+                "Komentar",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              Card(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text("John Doe"),
+                  subtitle: Text("Artikel yang sangat menarik!"),
+                ),
+              ),
+
+              Card(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text("Jane Smith"),
+                  subtitle: Text("Terima kasih atas informasinya."),
+                ),
               ),
             ],
           ),
